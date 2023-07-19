@@ -61,7 +61,7 @@
                     </button>        
                     <!-- 16:9 aspect ratio -->
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe  src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+<!--                        <iframe  src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>-->
                         <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/NzeONrmbOZ8" title="YouTube video player" frameborder="0" allow=" autoplay;  encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
@@ -302,10 +302,20 @@
                 {% for p in folio %}
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
                     <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="{{p.image.url}}" alt="">
+
+<!--                        <img class="img-fluid rounded w-100" src="{{p.image.url}}" alt="">-->
+
+                        <video class="img-fluid rounded w-100" loop muted autoplay="autoplay">
+
+                            <source src="{{p.video.url}}" type="video/mp4">
+
+                        </video>
+
+
                         <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
                             <a href="{{p.image.url}}" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+<!--                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>-->
+                                <h2>{{p.title}}</h2>
                             </a>
                         </div>
                     </div>

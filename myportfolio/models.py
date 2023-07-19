@@ -57,6 +57,7 @@ class portfolio(models.Model):
     stu = models.ForeignKey(yourDetails,on_delete=models.CASCADE)
     title = models.CharField(max_length=64,null=True,blank=True)
     image = models.ImageField(upload_to='portfolioImg', blank=True, null=True)
+    video = models.FileField(upload_to='portfolioVideo', blank=True, null=True)
     shortDecription = models.TextField(max_length=250, blank=True, null=True)
     fullDecription = models.TextField(max_length=1000, blank=True, null=True)
 
