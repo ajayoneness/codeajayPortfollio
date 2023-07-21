@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.text import slugify
 
 class yourDetails(models.Model):
     name = models.CharField(max_length=30, null=True, blank=True)
@@ -59,7 +59,20 @@ class portfolio(models.Model):
     image = models.ImageField(upload_to='portfolioImg', blank=True, null=True)
     video = models.FileField(upload_to='portfolioVideo', blank=True, null=True)
     shortDecription = models.TextField(max_length=250, blank=True, null=True)
-    fullDecription = models.TextField(max_length=1000, blank=True, null=True)
+    fullDecription = models.TextField(blank=True, null=True)
+    slug = models.SlugField(unique=False, blank=True,null=True)
+    url = models.URLField(blank=True,null=True)
+    category = models.CharField(max_length=20,blank=True,null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(portfolio, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
 
 class Clint(models.Model):
     stu = models.ForeignKey(yourDetails,on_delete=models.CASCADE)

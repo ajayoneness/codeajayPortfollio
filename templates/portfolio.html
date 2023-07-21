@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+
+
+    {% block content %}
+
+    <div class="container-fluid py-5" id="portfolio">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Portfolio</h1>
+                <h1 class="position-absolute text-uppercase text-primary">{{folio.title}}</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <video class="img-fluid rounded w-100" loop muted autoplay="autoplay">
+                        <source src="{{folio.video.url}}" type="video/mp4">
+                    </video>
+
+
+                    <div >
+
+                        <p>
+                            {{ folio.fullDecription|safe}}
+                        </p>
+
+                        {% if folio.url %}
+                        <b><a href="{{folio.url}}" >Live Preview</a></b>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}

@@ -4,7 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>codeAj</title>
+    <title>CodeAj - Ajay Pandit's Portfolio | Web Developer and Projects</title>
+
+    <meta name="description" content="Welcome to CodeAj, a showcase of Python projects by Ajay Pandit. Explore my portfolio and discover the world of Python development at CodeAjay."> 
+    <meta name="keywords" content="CodeAj, CodeAjay, Python, Python projects, Ajay Pandit, Portfolio, Web Developer, CodeAj Python">
     
 
     <link href="{% static 'img/favicon.ico' %}" rel="icon">
@@ -27,7 +30,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
     <!-- Navbar Start -->
     <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
+        <a href="{% url 'index' %}" class="navbar-brand ml-lg-3">
             <h1 class="m-0 display-5"><span class="text-primary">Code</span>Aj</h1>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -35,17 +38,17 @@
         </button>
         <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
             <div class="navbar-nav m-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                 <a href="#about" class="nav-item nav-link">About</a>
                 <a href="#qualification" class="nav-item nav-link">Quality</a>
                 <a href="#skill" class="nav-item nav-link">Skill</a>
-                <a href="#service" class="nav-item nav-link">Service</a>
+                <!-- <a href="#service" class="nav-item nav-link">Service</a> -->
                 <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
-                <a href="#testimonial" class="nav-item nav-link">Review</a>
-                <a href="#blog" class="nav-item nav-link">Blog</a>
+                <!-- <a href="#testimonial" class="nav-item nav-link">Review</a> -->
+                <!-- <a href="#blog" class="nav-item nav-link">Blog</a> -->
                 <a href="#contact" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="#" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a>
+            <a href="#"  id="sendmail" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -69,7 +72,7 @@
         </div>
     </div>
     <!-- Video Modal End -->
-
+    {% block content %}
 
     <!-- Header Start -->
     <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
@@ -98,6 +101,10 @@
     <!-- Header End -->
 
 
+    
+
+
+
     <!-- About Start -->
     <div class="container-fluid py-5" id="about">
         <div class="container">
@@ -122,8 +129,8 @@
                         <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{usr.address}}</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
                     </div>
-                    <a href="" class="btn btn-outline-primary mr-4">Hire Me</a>
-                    <a href="" class="btn btn-outline-primary">Learn More</a>
+                    <a href="#" class="btn btn-outline-primary mr-4" id="sendmail">Hire Me</a>
+                    <a href="#" class="btn btn-outline-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -188,9 +195,8 @@
             </div>
             <div class="row align-items-center">
 
-
-                <div class="col-md-12">
-                    {% for skill in skills %}
+                {% for skill in skills %}
+                <div class="col-md-6">
                     <div class="skill mb-4">
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-bold">{{skill.skillname}}</h6>
@@ -200,9 +206,8 @@
                             <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{skill.rate}}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                    {% endfor %}
-                    
                 </div>
+                {% endfor %}
                 
 
 
@@ -291,38 +296,65 @@
                 <div class="col-12 text-center mb-2">
                     <ul class="list-inline mb-4" id="portfolio-flters">
                         <li class="btn btn-sm btn-outline-primary m-1 active"  data-filter="*">All</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Design</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Development</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">Marketing</li>
+                        <li class="btn btn-sm btn-outline-primary m-1 " data-filter=".first">Development</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Design</li>
+                        
                     </ul>
                 </div>
             </div>
             <div class="row portfolio-container">
 
                 {% for p in folio %}
+
+                {% if p.category == 'development' %}
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
                     <div class="position-relative overflow-hidden mb-2">
 
 <!--                        <img class="img-fluid rounded w-100" src="{{p.image.url}}" alt="">-->
 
                         <video class="img-fluid rounded w-100" loop muted autoplay="autoplay">
-
                             <source src="{{p.video.url}}" type="video/mp4">
-
                         </video>
 
 
                         <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
                             <a href="{{p.image.url}}" data-lightbox="portfolio">
 <!--                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>-->
-                                <h2>{{p.title}}</h2>
+                                <a href="/{{p.id}}/{{p.slug}}/#portfolio"><h2>{{p.title}}</h2></a>
                             </a>
                         </div>
                     </div>
                 </div>
+                {% endif %}
+
+                {% if p.category == 'design' %}
+
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                    <div class="position-relative overflow-hidden mb-2">
+
+                        {% if p.image %}
+                       <img class="img-fluid rounded w-100" src="{{p.image.url}}" alt="">
+                        {% endif %}
+                        {% if p.video %}
+                        <video class="img-fluid rounded w-100" loop muted autoplay="autoplay">
+                            <source src="{{p.video.url}}" type="video/mp4">
+                        </video>
+                        {% endif  %}
+
+
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                            <a href="{{p.image.url}}" data-lightbox="portfolio">
+                               <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
                 {% endfor %}
 
 
+                
             </div>
         </div>
     </div>
@@ -441,6 +473,8 @@
     </div>
     <!-- Contact End -->
 
+    {% endblock %}
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
@@ -489,6 +523,26 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+
+
+
+
+    <script>
+
+        $("#sendmail").click(function(){
+            var recipientEmail = "codeaj4u@gmail.com.com";
+            var subject = "Hire";
+            var body = "Hi,\n\nI wnat to hire you in my company(XYZ company)\n\nBest regards,\nYour Name";
+
+            var mailtoUrl = "mailto:" + encodeURIComponent(recipientEmail) +
+                            "?subject=" + encodeURIComponent(subject) +
+                            "&body=" + encodeURIComponent(body);
+
+            window.location.href = mailtoUrl;
+        })
+
+
+    </script>
 </body>
 
 </html>

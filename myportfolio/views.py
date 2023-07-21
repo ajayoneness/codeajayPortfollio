@@ -36,3 +36,21 @@ def index(request):
 
 
     return render(request,'index.html',cont)
+
+
+def portfolioSingle(request,id,slug):
+
+    usr = yourDetails.objects.get(id=1)
+    profile = ProfileImage.objects.get(stu=usr)
+    resumes = Resume.objects.get(stu=usr)
+    folio = portfolio.objects.get(id=id)
+
+    cont = {
+        'usr': usr,
+        'profile': profile,
+        'resume': resumes,
+        'folio':folio
+
+    }
+
+    return render(request,'portfolio.html',cont)
