@@ -12,19 +12,29 @@
 
     <link href="{% static 'img/favicon.ico' %}" rel="icon">
 
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"> 
 
+    
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
 
     <!-- Libraries Stylesheet -->
     <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
     <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
 
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -54,6 +64,7 @@
     <!-- Navbar End -->
 
 
+
     <!-- Video Modal Start -->
     <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -79,11 +90,15 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="{{profile.image2.url}}" alt="">
+                    <img class="img-fluid w-100 rounded-circle shadow-sm animate__animated wow animate__fadeInLeft" src="{{profile.image2.url}}" alt="">
                 </div>
                 <div class="col-lg-7 text-center text-lg-left">
                     <h3 class="text-white font-weight-normal mb-3">I'm</h3>
-                    <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">{{usr.name}}</h1>
+
+                    
+
+                    <h1 class="display-3 text-uppercase text-primary mb-2 animate__animated wow animate__wobble" style="-webkit-text-stroke: 2px #ffffff;">{{usr.name}}</h1>
+
                     <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
                     <div class="typed-text d-none">Python Developer(Django Expert) , Web Developer, Front End Developer, Computer Vision</div>
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
@@ -92,7 +107,7 @@
                             data-src="https://youtu.be/NzeONrmbOZ8" data-target="#videoModal">
                             <span></span>
                         </button>
-                        <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block">Play Video</h5>
+                        <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block animate__animated wow animate__hinge">Play Video</h5>
                     </div>
                 </div>
             </div>
@@ -108,15 +123,15 @@
     <!-- About Start -->
     <div class="container-fluid py-5" id="about">
         <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
+            <div class="position-relative d-flex align-items-center justify-content-center animate__animated wow animate__rotateInUpLeft">
                 <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
                 <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-5 pb-4 pb-lg-0">
-                    <img class="img-fluid rounded w-100" src="{{profile.image.url}}" alt="">
+                    <img class="img-fluid rounded w-100 animate__animated wow animate__hinge" src="{{profile.image.url}}" alt="">
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 animate__animated wow animate__hinge">
                     <h3 class="mb-4">Python Django Developer</h3>
                     <p>As a fresher Python (Django, OpenCV) developer, I am passionate about leveraging my programming skills and problem-solving abilities to develop innovative solutions. My experience includes working with Python, Django, and OpenCV to build web applications and computer vision-based projects.</p>
                     <div class="row mb-3">
@@ -147,7 +162,7 @@
                 <h1 class="position-absolute text-uppercase text-primary">Education & Expericence</h1>
             </div>
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6 animate__animated wow animate__hinge">
                     <h3 class="mb-4">My Education</h3>
                     <div class="border-left border-primary pt-2 pl-4 ml-2">
                         
@@ -163,14 +178,14 @@
                         
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 animate__animated wow animate__hinge">
                     <h3 class="mb-4">My Expericence</h3>
                     <div class="border-left border-primary pt-2 pl-4 ml-2">
 
                         {% for i in exp %}
                         <div class="position-relative mb-4">
                             <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">{{i.post}}</h5>
+                            <h5 class="font-weight-bold mb-1 ">{{i.post}}</h5>
                             <p class="mb-2"><strong>{{i.company_name}}</strong> | <small>{{i.Duration}} year</small></p>
                             <p>{{i.Decription}}</p>
                         </div>
@@ -189,7 +204,7 @@
     {% if skills %}
     <div class="container-fluid py-5" id="skill">
         <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
+            <div class="position-relative d-flex align-items-center justify-content-center animate__animated wow animate__hinge">
                 <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
                 <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
             </div>
@@ -289,8 +304,8 @@
     <div class="container-fluid pt-5 pb-3" id="portfolio">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
-                <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
+                <h1 class="display-1 text-uppercase text-white " style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
+                <h1 class="position-absolute text-uppercase text-primary animate__animated wow animate__hinge">My Portfolio</h1>
             </div>
             <div class="row">
                 <div class="col-12 text-center mb-2">
@@ -312,12 +327,12 @@
 
 <!--                        <img class="img-fluid rounded w-100" src="{{p.image.url}}" alt="">-->
 
-                        <video class="img-fluid rounded w-100" loop muted autoplay="autoplay">
+                        <video class="img-fluid rounded w-100 animate__animated wow animate__hinge" loop muted autoplay="autoplay">
                             <source src="{{p.video.url}}" type="video/mp4">
                         </video>
 
 
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center animate__animated wow animate__hinge">
                             <a href="{{p.image.url}}" data-lightbox="portfolio">
 <!--                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>-->
                                 <a href="/{{p.id}}/{{p.slug}}/#portfolio"><h2>{{p.title}}</h2></a>
@@ -440,29 +455,29 @@
                             {% csrf_token %}
                             <div class="form-row">
                                 <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" name="name" id="name" placeholder="Your Name"
+                                    <input type="text" class="form-control p-4 animate__animated wow animate__hinge" name="name" id="name" placeholder="Your Name"
                                         required="required" data-validation-required-message="Please enter your name" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" name="email" id="email" placeholder="Your Email"
+                                    <input type="email" class="form-control p-4 animate__animated wow animate__hinge" name="email" id="email" placeholder="Your Email"
                                         required="required" data-validation-required-message="Please enter your email" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" name="subject" id="subject" placeholder="Subject"
+                                <input type="text" class="form-control p-4 animate__animated wow animate__hinge" name="subject" id="subject" placeholder="Subject"
                                     required="required" data-validation-required-message="Please enter a subject" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="5" name="message" id="message" placeholder="Message"
+                                <textarea class="form-control py-3 px-4 animate__animated wow animate__hinge" rows="5" name="message" id="message" placeholder="Message"
                                     required="required"
                                     data-validation-required-message="Please enter your message"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send
+                                <button class="btn btn-outline-primary animate__animated wow animate__hinge" type="submit" id="sendMessageButton">Send
                                     Message</button>
                             </div>
                         </form>
@@ -524,10 +539,15 @@
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
 
+    <!-- wow cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 
 
     <script>
+        
+        new WOW().init();
 
         $("#sendmail").click(function(){
             var recipientEmail = "codeaj4u@gmail.com.com";
